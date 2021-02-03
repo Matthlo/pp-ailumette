@@ -1,4 +1,3 @@
-module.exports = async function question1() {}
 const display = require ('./display.js')
 const readline = require('readline')
 const lodash = require("lodash");
