@@ -13,7 +13,7 @@ const map = [
 
 let answer1 = ""
 let answer2 = ""
-let nombresAlumettes = 0
+let nombresAlumettes = 16
 let tourFini = false
 
 
@@ -71,7 +71,7 @@ let count = 0
       }
       if (answer2>count){
         console.log("We have", count, "alumette and you try to remove" ,answer2,", this can't work")
-        return
+        return main()
       }
       else {
         for (let i = 0; i < 9; i++) {
@@ -88,7 +88,7 @@ let count = 0
         console.log(map[x].join(''))
     }
 }
-
+let nombresAlumettes = 0;
     lodash.each(map, (line) => {
       nombresAlumettes += lodash.countBy(line)["|"] || 0;
     });
@@ -97,5 +97,4 @@ let count = 0
   console.log(nombresAlumettes, "alumettes sur le plateau")
   rl.close()
 }
-main() 
-
+main()
