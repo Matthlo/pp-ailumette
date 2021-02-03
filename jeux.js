@@ -75,7 +75,7 @@ let count = 0
         for (let i = 0; i < 9; i++) {
           if ((map[answer1-1][i] == "|")&&(answer2>0)) {
             map[answer1-1][i] = " "
-            
+            answer2--
       }}}
   console.log ("Player removed", answer2, "match(es) from line", answer1)
   
