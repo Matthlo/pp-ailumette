@@ -14,6 +14,9 @@ const map = [
 let answer1 = ""
 let answer2 = ""
 let nombresAlumettes = 0
+let tourFini = false
+
+
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -25,11 +28,11 @@ const question1 = () => {
     rl.question('Line : ', (answer) => {
       if ( answer > 4 || answer == '0') {
         console.log('Error: this line is out of range')
-        return
+        return main()
       }
       else if (answer < 0 || isNaN(answer) || answer == 0){
         console.log('Error: invalid input (positive number expected)')
-        return
+        return main()
       }
        answer1 = answer
       resolve()
@@ -43,22 +46,21 @@ const question2 = () => {
     rl.question('Matches: ', (answer) => {
       if (answer == '0') {
         console.log('Error: you have to remove at least one match')
-        return
+        return main()
       }
       else if (answer < 0 || isNaN(answer) || answer == 0){
         console.log('Error: invalid input (positive number expected)')
-        return
+        return main()
       }
       else if(answer > 2) {
         console.log('Error: not enough matches on this line')
-        return false;
+        return main();
       }
       answer2 = answer
       resolve()
     })
   })
 }
-
 const main = async () => {
   await question1()
   await question2()
@@ -78,7 +80,7 @@ let count = 0
             answer2--
       }}}
   console.log ("Player removed", answer2, "match(es) from line", answer1)
-  
+
   function display(values) {
     const rows = values.length
 
@@ -91,11 +93,9 @@ let count = 0
       nombresAlumettes += lodash.countBy(line)["|"] || 0;
     });
 
-
-
-
   display(map)
   console.log(nombresAlumettes, "alumettes sur le plateau")
   rl.close()
 }
 main() 
+
